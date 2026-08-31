@@ -19,7 +19,7 @@ describe("Button", () => {
     expect(btn).toBeInTheDocument();
   });
 
-  test("Button exists", () => {
+  test("Button is rendered", () => {
     setup(<Button name="btn" />);
     const btn = screen.getByRole("button");
     const name = btn.textContent;
