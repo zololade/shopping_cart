@@ -1,5 +1,16 @@
+import { Outlet } from "react-router";
+
+import { Nav } from "./components/nav/Nav";
+
+import "./styles/global.css";
+
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <Nav />
+      <Outlet />
+    </>
+  );
 }
 
 export { App };

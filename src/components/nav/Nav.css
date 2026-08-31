@@ -1,0 +1,65 @@
+@scope (.navBar) {
+  :scope {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    min-height: 50px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.165);
+  }
+
+  .logo {
+    display: flex;
+  }
+  .icon {
+    background: linear-gradient(90deg, #ff0000 0%, #ff8c00 50%, #ffd700 100%);
+    clip-path: polygon(
+      10% 35%,
+      30% 35%,
+      30% 10%,
+      70% 10%,
+      70% 35%,
+      90% 35%,
+      85% 100%,
+      15% 100%,
+      10% 35%,
+      40% 35%,
+      60% 35%,
+      60% 20%,
+      40% 20%,
+      40% 35%
+    );
+
+    width: 20px;
+    height: 20px;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    li {
+      position: relative;
+      a {
+        text-decoration: none;
+        color: black;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: black;
+          height: 2px;
+          inset: 100% 50% 0 50%;
+        }
+
+        &:hover,
+        &.active {
+          &::after {
+            inset: 100% 0 0 0;
+            transition: inset 0.2s ease-out;
+          }
+        }
+      }
+    }
+  }
+}

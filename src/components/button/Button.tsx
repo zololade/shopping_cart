@@ -5,7 +5,7 @@ interface BtnProp {
 }
 
 function Button({ name }: BtnProp) {
-  return <button>{name}</button>;
+  return <button className="btn">{name}</button>;
 }
 
 export { Button };

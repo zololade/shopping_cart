@@ -11,6 +11,7 @@
   /* Modern Nesting syntax without ampersand duplication */
   &:not(textarea) {
     scrollbar-gutter: stable both-edges;
+    scrollbar-width: none;
   }
 }
 
@@ -31,4 +32,90 @@ fieldset {
   border: none;
   margin: 0;
   padding: 0;
+}
+
+/* ==========================================================================
+   2. Design Tokens (CSS Variables)
+   ========================================================================== */
+:root {
+  /* --text: #524a59;
+  --text-h: #0b0813;
+  --bg: #ffffff;
+  --border: #e2e0e5;
+  --code-bg: #f5f4ef;
+  --accent: #9313ff;
+  --accent-bg: rgba(147, 19, 255, 0.08);
+  --accent-border: rgba(147, 19, 255, 0.4);
+  --social-bg: rgba(245, 244, 239, 0.5);
+  --shadow: 0 10px 15px -3px rgba(11, 8, 19, 0.08), 0 4px 6px -2px rgba(11, 8, 19, 0.04); */
+
+  /* Typography Stack Configuration */
+  --sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --heading: var(--sans);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Global baseline options */
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.01em; /* Percentage or em tracking scales better than fixed pixels */
+  /* color-scheme: light dark; */
+  color: var(--text);
+  /* background-color: var(--bg); */
+  font-synthesis: none;
+
+  /* Fluid Typography for screens under 1024px width */
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+/* ==========================================================================
+   3. Dark Mode Theme Context
+   ========================================================================== */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9fa6b2;
+    --text-h: #f9fafb;
+    --bg: #0f1015;
+    --border: #23252e;
+    --code-bg: #191a21;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.12);
+    --accent-border: rgba(192, 132, 252, 0.4);
+    --social-bg: rgba(35, 37, 46, 0.5);
+    --shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.5), 0 4px 8px -2px rgba(0, 0, 0, 0.3);
+  }
+} */
+
+/* ==========================================================================
+   4. Typography Semantics
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  font-weight: 600; /* Bumped to 600 for punchier typography hierarchy */
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem); /* Automated size scaling between 36px and 56px */
+  letter-spacing: -0.03em;
+  margin-block: 1.5rem; /* Uses logical properties for cleaner top/bottom margin rendering */
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem); /* Automated size scaling between 20px and 24px */
+  letter-spacing: -0.015em;
+  margin-block-end: 0.5rem;
+}
+
+p {
+  margin-block-end: 1rem;
 }
