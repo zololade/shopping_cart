@@ -1,14 +1,14 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 import "./Nav.css";
 
 function Nav() {
   return (
     <header className="navBar">
-      <div className="logo">
+      <Link to="/" className="logo">
         <div className="icon"></div>
         <span>Shop</span>
-      </div>
+      </Link>
 
       <nav>
         <ul>

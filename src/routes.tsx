@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
 
 import { App } from "./App";
-import { Cart } from "./pages/Cart";
-import { ErrorPage } from "./pages/ErrorPage";
-import { Home } from "./pages/Home";
-import { Shop } from "./pages/Shop";
+import { Cart } from "./pages/cart/Cart";
+import { ErrorPage } from "./pages/error/ErrorPage";
+import { Home } from "./pages/home/Home";
+import { Shop } from "./pages/shop/Shop";
 
 const router = createBrowserRouter([
   {
