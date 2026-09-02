@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useFetch<T>(urlString: string) {
-  const [retrievedData, setRetrievedData] = useState<T[] | null>(null);
+  const [retrievedData, setRetrievedData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -18,7 +18,7 @@ function useFetch<T>(urlString: string) {
           throw new Error(`HTTP error: Status ${response.status}`);
         }
 
-        const productData: T[] = await response.json();
+        const productData: T = await response.json();
         setRetrievedData(productData);
         setError(null);
       } catch (err) {

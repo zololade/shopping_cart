@@ -1,25 +1,13 @@
 import { useFetch } from "../../hooks/useFetch/useFetch";
+import type { DummyJSONProductsResponse } from "../../types/responseType";
 
 import "./Shop.css";
 
-export interface Rating {
-  rate: number;
-  count: number;
-}
-
-export interface ProductResponse {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
 function Shop() {
-  const { data, error, isLoading } = useFetch<ProductResponse>("https://fakestoreapi.com/products");
-
+  const { data, error, isLoading } = useFetch<DummyJSONProductsResponse>(
+    "https://dummyjson.com/products?limit=10",
+  );
+  console.log(data);
   if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error}</p>;
@@ -27,13 +15,13 @@ function Shop() {
   return (
     <section className="shop">
       <h1>shop</h1>
-      {data?.map((val) => (
+      {data?.products?.map((val) => (
         <article key={val.id}>
-          <img src={val.image} alt={val.title} />
+          <img src={val.images[0]} alt={val.title} />
           <h2>{val.title}</h2>
           <p>{val.description}</p>
-          <span>{val.category}</span> <span>{val.price}</span> <span>{val.rating.rate}</span>{" "}
-          <span>{val.rating.count}</span>
+          <span>{val.category}</span> <span>{val.price}</span> <span>{val.rating}</span>{" "}
+          <span>{val.rating}</span>
         </article>
       ))}
     </section>
