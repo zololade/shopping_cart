@@ -48,7 +48,8 @@
       width: 100%;
       height: auto;
       display: block;
-      filter: drop-shadow(0 20px 30px rgba(108, 99, 255, 0.12));
+      filter: var(--shadow-illustration);
+      transition: filter 0.25s ease;
     }
   }
 }
