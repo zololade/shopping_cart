@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router";
 
 import shopper from "../../assets/shopping.svg";
@@ -6,14 +5,6 @@ import shopper from "../../assets/shopping.svg";
 import "./Home.css";
 
 function Home() {
-  useEffect(() => {
-    document.body.classList.add("home-active");
-
-    return () => {
-      document.body.classList.remove("home-active");
-    };
-  }, []);
-
   return (
     <section className="home">
       <div className="intro">

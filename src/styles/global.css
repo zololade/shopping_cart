@@ -106,6 +106,10 @@ p {
 /* ==========================================================================
    5. Miscellaneous
    ========================================================================== */
-body.home-active {
-  background: radial-gradient(circle at 80% 50%, rgba(108, 99, 255, 0.15) 0%, var(--bg) 80%);
+body {
+  background:
+    radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.15) 0px, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.12) 0px, transparent 50%),
+    radial-gradient(at 10% 50%, rgba(245, 244, 239, 1) 0px, transparent 50%);
+  background-color: #fcfcfd;
 }
