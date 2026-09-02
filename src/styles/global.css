@@ -1,96 +1,66 @@
-/* @import url("./variables.css"); */
+@import url("./variables.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 /* ==========================================================================
    1. Reset & Global Defaults
    ========================================================================== */
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  overflow-wrap: anywhere; /* Replaces legacy word-wrap & handles long URLs better */
+  overflow-wrap: anywhere;
+}
 
-  /* Modern Nesting syntax without ampersand duplication */
-  &:not(textarea) {
-    scrollbar-gutter: stable both-edges;
-    scrollbar-width: none;
-  }
+/* Hide scrollbars globally except on text areas */
+*:not(textarea) {
+  scrollbar-width: none;
+  scrollbar-gutter: stable both-edges;
 }
 
 html {
-  /* Dynamic page scrolling adjustments for general modern feel */
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
 }
 
 body {
-  min-height: 100vh; /* Ensures full height layout containers work */
-  text-rendering: optimizeSpeed; /* Better rendering performance than optimizeLegibility */
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 fieldset {
   border: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* ==========================================================================
-   2. Design Tokens (CSS Variables)
+   2. Design Tokens & Root Styles
    ========================================================================== */
 :root {
-  /* --text: #524a59;
-  --text-h: #0b0813;
-  --bg: #ffffff;
-  --border: #e2e0e5;
-  --code-bg: #f5f4ef;
-  --accent: #9313ff;
-  --accent-bg: rgba(147, 19, 255, 0.08);
-  --accent-border: rgba(147, 19, 255, 0.4);
-  --social-bg: rgba(245, 244, 239, 0.5);
-  --shadow: 0 10px 15px -3px rgba(11, 8, 19, 0.08), 0 4px 6px -2px rgba(11, 8, 19, 0.04); */
-
-  /* Typography Stack Configuration */
   --sans:
-    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   --heading: var(--sans);
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Global baseline options */
   font-family: var(--sans);
   font-size: 18px;
   line-height: 1.5;
-  letter-spacing: 0.01em; /* Percentage or em tracking scales better than fixed pixels */
-  /* color-scheme: light dark; */
-  color: var(--text);
-  /* background-color: var(--bg); */
+  letter-spacing: 0.01em;
   font-synthesis: none;
+  color: var(--text);
+}
 
-  /* Fluid Typography for screens under 1024px width */
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
+  :root {
     font-size: 16px;
   }
 }
 
 /* ==========================================================================
-   3. Dark Mode Theme Context
-   ========================================================================== */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9fa6b2;
-    --text-h: #f9fafb;
-    --bg: #0f1015;
-    --border: #23252e;
-    --code-bg: #191a21;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.12);
-    --accent-border: rgba(192, 132, 252, 0.4);
-    --social-bg: rgba(35, 37, 46, 0.5);
-    --shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.5), 0 4px 8px -2px rgba(0, 0, 0, 0.3);
-  }
-} */
-
-/* ==========================================================================
-   4. Typography Semantics
+   3. Typography & Semantics
    ========================================================================== */
 h1,
 h2,
@@ -99,23 +69,43 @@ h4,
 h5,
 h6 {
   font-family: var(--heading);
-  font-weight: 600; /* Bumped to 600 for punchier typography hierarchy */
-  color: var(--text-h);
+  font-weight: 600;
   line-height: 1.2;
+  color: var(--text-h);
 }
 
 h1 {
-  font-size: clamp(2.25rem, 5vw, 3.5rem); /* Automated size scaling between 36px and 56px */
+  margin-block: 1.5rem;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   letter-spacing: -0.03em;
-  margin-block: 1.5rem; /* Uses logical properties for cleaner top/bottom margin rendering */
 }
 
 h2 {
-  font-size: clamp(1.25rem, 3vw, 1.5rem); /* Automated size scaling between 20px and 24px */
-  letter-spacing: -0.015em;
   margin-block-end: 0.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  letter-spacing: -0.015em;
 }
 
 p {
   margin-block-end: 1rem;
+}
+
+/* ==========================================================================
+   4. Layout Containers
+   ========================================================================== */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > *:not(.navBar) {
+    flex: 1 1 0;
+  }
+}
+
+/* ==========================================================================
+   5. Miscellaneous
+   ========================================================================== */
+body.home-active {
+  background: radial-gradient(circle at 80% 50%, rgba(108, 99, 255, 0.15) 0%, var(--bg) 80%);
 }

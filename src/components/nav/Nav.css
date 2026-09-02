@@ -1,22 +1,41 @@
 @scope (.navBar) {
   :scope {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 1rem 2rem;
     min-height: 50px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.165);
+    background-color: transparent;
+    /* background-color: var(--bg); */
+    /* border-bottom: 1px solid var(--border); */
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease;
   }
+
   a {
+    color: var(--text-h);
     text-decoration: none;
-    color: black;
   }
 
   .logo {
     display: flex;
+    align-items: baseline;
+    span {
+      font-weight: 500;
+      background: var(--gradient-accent);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* Smooth depth shadow */
+      filter: drop-shadow(0 2px 8px rgba(108, 99, 255, 0.3));
+    }
   }
+
   .icon {
-    background: linear-gradient(90deg, #ff0000 0%, #ff8c00 50%, #ffd700 100%);
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-accent);
     clip-path: polygon(
       10% 35%,
       30% 35%,
@@ -33,38 +52,39 @@
       40% 20%,
       40% 35%
     );
-
-    width: 20px;
-    height: 20px;
   }
+
   ul {
-    list-style: none;
     display: flex;
     gap: 1rem;
+    list-style: none;
+  }
 
-    li {
-      position: relative;
-      a {
-        text-decoration: none;
-        color: #6e6e6e;
+  li {
+    position: relative;
+
+    a {
+      color: var(--text-muted);
+      transition: color 0.25s ease-in-out;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-h);
+        transform: scaleX(0);
+        transition: transform 0.25s ease-in-out;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--text-h);
 
         &::after {
-          content: "";
-          position: absolute;
-          background-color: black;
-          height: 2px;
-          inset: 100% 50% 0 50%;
-        }
-
-        &:hover,
-        &.active {
-          color: black;
-          transition: color 0.25s ease-in-out;
-
-          &::after {
-            inset: 100% 0 0 0;
-            transition: inset 0.25s ease-in-out;
-          }
+          transform: scaleX(1);
         }
       }
     }

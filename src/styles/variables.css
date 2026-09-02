@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Design Tokens & Color Schemes
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Primitives */
+  --color-purple-500: #6c63ff;
+  --color-purple-600: #6c29ff;
+  --color-cyan-400: #6cdeff;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f5f4ef;
+  --color-gray-200: #e2e0e5;
+  --color-gray-400: #9fa6b2;
+  --color-gray-600: #6e6e6e;
+  --color-gray-800: #23252e;
+  --color-gray-900: #0f1015;
+  --color-gray-950: #0b0813;
+
+  /* Accent Gradient */
+  --gradient-accent: linear-gradient(
+    90deg,
+    var(--color-purple-600) 0%,
+    var(--color-purple-500) 50%,
+    var(--color-cyan-400) 100%
+  );
+
+  /* Light Theme (Default Context) */
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-subtle: var(--color-gray-100);
+  --text: #524a59;
+  --text-h: var(--color-gray-950);
+  --text-muted: var(--color-gray-600);
+
+  --border: rgba(128, 128, 128, 0.165);
+  --border-strong: var(--color-gray-200);
+
+  --accent: var(--color-purple-500);
+  --accent-hover: var(--color-purple-600);
+  --accent-contrast: #ffffff;
+  --accent-bg: rgba(108, 99, 255, 0.08);
+
+  --shadow-sm: 0 1px 2px rgba(11, 8, 19, 0.05);
+  --shadow-md: 0 4px 6px -2px rgba(11, 8, 19, 0.04), 0 10px 15px -3px rgba(11, 8, 19, 0.08);
+}
+
+/* Explicit Dark Theme Class OR OS System Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: var(--color-gray-900);
+    --bg-subtle: #191a21;
+    --text: var(--color-gray-400);
+    --text-h: #f9fafb;
+    --text-muted: #838a95;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: var(--color-gray-800);
+
+    --accent: var(--color-purple-500);
+    --accent-hover: #837cff;
+    --accent-contrast: #ffffff;
+    --accent-bg: rgba(108, 99, 255, 0.15);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.3), 0 10px 20px -3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Manual Theme Override (e.g. data-theme="dark") */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--color-gray-900);
+  --bg-subtle: #191a21;
+  --text: var(--color-gray-400);
+  --text-h: #f9fafb;
+  --text-muted: #838a95;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: var(--color-gray-800);
+
+  --accent: var(--color-purple-500);
+  --accent-hover: #837cff;
+  --accent-contrast: #ffffff;
+  --accent-bg: rgba(108, 99, 255, 0.15);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.3), 0 10px 20px -3px rgba(0, 0, 0, 0.5);
+}
