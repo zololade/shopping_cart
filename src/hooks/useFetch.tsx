@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useFetch<T>(urlString: string) {
-  const [retrievedProduct, setRetrievedProduct] = useState<T[] | null>(null);
+  const [retrievedData, setRetrievedData] = useState<T[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -19,12 +19,12 @@ function useFetch<T>(urlString: string) {
         }
 
         const productData: T[] = await response.json();
-        setRetrievedProduct(productData);
+        setRetrievedData(productData);
         setError(null);
       } catch (err) {
         if ((err as Error).name !== "AbortError") {
           setError((err as Error).message);
-          setRetrievedProduct(null);
+          setRetrievedData(null);
         }
       } finally {
         setIsLoading(false);
@@ -36,7 +36,7 @@ function useFetch<T>(urlString: string) {
     return () => controller.abort();
   }, [urlString]);
 
-  return { data: retrievedProduct, error, isLoading };
+  return { data: retrievedData, error, isLoading };
 }
 
 export { useFetch };
