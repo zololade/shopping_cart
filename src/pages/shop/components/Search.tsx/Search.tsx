@@ -2,12 +2,12 @@ import { useState, type SubmitEventHandler } from "react";
 
 import "./Search.css";
 
-function Search({ submit }: { submit: (url: string) => void }) {
+function Search({ onSearch }: { onSearch: (url: string) => void }) {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit: SubmitEventHandler = (e) => {
     e.preventDefault();
-    submit(inputValue);
+    onSearch(inputValue);
   };
 
   return (

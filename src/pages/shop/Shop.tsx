@@ -22,7 +22,7 @@ function Shop() {
 
   return (
     <section className="shop">
-      <Search submit={handleSubmit} />
+      <Search onSearch={handleSubmit} />
       <Products {...data} />
     </section>
   );
