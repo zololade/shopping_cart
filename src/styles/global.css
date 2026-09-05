@@ -94,12 +94,14 @@ p {
    4. Layout Containers
    ========================================================================== */
 #root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  .app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
-  > *:not(.navBar) {
-    flex: 1 1 0;
+    > *:not(.navBar) {
+      flex: 1 1 0;
+    }
   }
 }
 
@@ -107,27 +109,35 @@ p {
    Dynamic Ambient Background
    ========================================================================== */
 body {
-  background-color: var(--bg, #fcfcfd);
-  background-image:
-    radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.18) 0px, transparent 50%),
-    radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.15) 0px, transparent 50%),
-    radial-gradient(at 10% 50%, var(--bg-subtle, rgba(245, 244, 239, 0.8)) 0px, transparent 50%);
-  background-attachment: fixed; /* Keeps the gradient pinned smoothly during scroll */
+  .app-container {
+    background-color: var(--bg, #fcfcfd);
+    &.home-active {
+      background-image:
+        radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.18) 0px, transparent 50%),
+        radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.15) 0px, transparent 50%),
+        radial-gradient(at 10% 50%, var(--bg-subtle, rgba(245, 244, 239, 0.8)) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+  }
 }
 
 /* Dark Mode Mesh Override */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) body {
+    .app-container .home-active {
+      background-image:
+        radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.08) 0px, transparent 50%),
+        radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.22) 0px, transparent 50%),
+        radial-gradient(at 10% 50%, rgba(25, 26, 33, 0.6) 0px, transparent 50%);
+    }
+  }
+}
+
+[data-theme="dark"] body {
+  .app-container .home-active {
     background-image:
       radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.08) 0px, transparent 50%),
       radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.22) 0px, transparent 50%),
       radial-gradient(at 10% 50%, rgba(25, 26, 33, 0.6) 0px, transparent 50%);
   }
-}
-
-[data-theme="dark"] body {
-  background-image:
-    radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.08) 0px, transparent 50%),
-    radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.22) 0px, transparent 50%),
-    radial-gradient(at 10% 50%, rgba(25, 26, 33, 0.6) 0px, transparent 50%);
 }

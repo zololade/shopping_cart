@@ -1,16 +1,23 @@
 @scope (.navBar) {
-  :scope {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 1rem 2rem;
-    min-height: 50px;
-    background-color: transparent;
-    /* background-color: var(--bg); */
-    /* border-bottom: 1px solid var(--border); */
-    transition:
-      background-color 0.25s ease,
-      border-color 0.25s ease;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem 2rem;
+  min-height: 50px;
+  background-color: transparent;
+
+  animation: scrolled-nav linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 50px;
+
+  @keyframes scrolled-nav {
+    to {
+      background-color: var(--bg);
+      /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    }
   }
 
   a {

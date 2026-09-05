@@ -1,0 +1,67 @@
+@scope (.products) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+  width: 100%;
+
+  .product {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    /* Card Inner Content */
+    > article {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.25rem;
+      gap: 0.5rem;
+
+      /* Product Image Container */
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        background: rgb(242, 242, 242);
+        padding: 0.75rem;
+      }
+
+      /* Product Title */
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-muted);
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Category Tag */
+      span:nth-of-type(1) {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6cdeff;
+        font-weight: 500;
+      }
+
+      /* Price Badge */
+      span:nth-of-type(2) {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text);
+
+        &::before {
+          content: "$";
+        }
+      }
+    }
+  }
+}
