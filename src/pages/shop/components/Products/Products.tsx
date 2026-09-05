@@ -61,7 +61,7 @@ function Products({ data, error, isLoading }: ProductsProps) {
       {data?.products.map((val) => (
         <Link key={val.id} to={`/product/${val.id}`} className="product">
           <article>
-            <img src={val.thumbnail || val.images[0]} alt={val.title} loading="lazy" />
+            <img src={val.thumbnail || val.images[0]} alt={val.title} />
             <h2>{val.title}</h2>
             <span>{val.category}</span>
             <span>{val.price}</span>
