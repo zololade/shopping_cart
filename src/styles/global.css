@@ -141,3 +141,17 @@ body {
       radial-gradient(at 10% 50%, rgba(25, 26, 33, 0.6) 0px, transparent 50%);
   }
 }
+
+/* misc */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,6 @@
+@scope (.shop) {
+  :scope {
+    display: grid;
+    padding: 1rem 2rem;
+  }
+}

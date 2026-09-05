@@ -4,7 +4,18 @@ import type { DummyJSONProductsResponse } from "../../../../types/responseType";
 
 import "./Products.css";
 
-function Products({ data }: { data: DummyJSONProductsResponse | null }) {
+function Products({
+  data,
+  error,
+  isLoading,
+}: {
+  data: DummyJSONProductsResponse | null;
+  error: string | null;
+  isLoading: boolean;
+}) {
+  if (isLoading) return <p>Loading...</p>;
+
+  if (error) return <p>{error}</p>;
   return (
     <section className="products">
       {data?.products?.map((val) => (
