@@ -5,12 +5,20 @@ function useFetch<T>(urlString: string) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // Track previous URL to detect changes during render
+  const [prevUrl, setPrevUrl] = useState<string>(urlString);
+
+  // Sync state immediately during render when URL changes (prevents frame flash)
+  if (urlString !== prevUrl) {
+    setPrevUrl(urlString);
+    setIsLoading(true);
+    setError(null);
+  }
+
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
       try {
         const response = await fetch(urlString, {
           signal: controller.signal,
@@ -22,7 +30,6 @@ function useFetch<T>(urlString: string) {
 
         const productData: T = await response.json();
         setRetrievedData(productData);
-        setError(null);
       } catch (err) {
         if ((err as Error).name !== "AbortError") {
           setError((err as Error).message);
@@ -34,7 +41,6 @@ function useFetch<T>(urlString: string) {
     };
 
     fetchData();
-
     return () => controller.abort();
   }, [urlString]);
 
