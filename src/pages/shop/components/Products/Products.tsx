@@ -19,7 +19,7 @@ function Products({
   return (
     <section className="products">
       {data?.products?.map((val) => (
-        <Link key={val.id} to="#" className="product">
+        <Link key={val.id} to={`/product/${val.id}`} className="product">
           <article>
             <img src={val.images[0]} alt={val.title} />
             <h2>{val.title}</h2>

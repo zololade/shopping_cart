@@ -8,12 +8,16 @@ import { Products } from "./components/Products/Products";
 import { Search } from "./components/Search.tsx/Search";
 
 function Shop() {
-  const [URL, setURl] = useState<string>("https://dummyjson.com/products?limit=10");
+  const [URL, setURL] = useState<string>("https://dummyjson.com/products?limit=10");
   const data = useFetch<DummyJSONProductsResponse>(URL);
 
   function handleSubmit(query: string) {
-    if (query.trim() === "") return;
-    setURl(`https://dummyjson.com/products/search?q=${query}`);
+    const trimmed = query.trim();
+    if (!trimmed) {
+      setURL("https://dummyjson.com/products?limit=10");
+    } else {
+      setURL(`https://dummyjson.com/products/search?q=${encodeURIComponent(trimmed)}`);
+    }
   }
 
   return (

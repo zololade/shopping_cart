@@ -9,6 +9,8 @@ function useFetch<T>(urlString: string) {
     const controller = new AbortController();
 
     const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(urlString, {
           signal: controller.signal,

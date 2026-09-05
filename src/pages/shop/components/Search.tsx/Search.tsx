@@ -21,6 +21,7 @@ function Search({ submit }: { submit: (url: string) => void }) {
         name="q"
         placeholder="Search..."
         onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
         autoComplete="off"
       />
       <button type="submit">
