@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { useFetch } from "../../hooks/useFetch/useFetch";
 import type { DummyJSONProductsResponse } from "../../types/responseType";
 
@@ -6,11 +8,17 @@ import { Products } from "./components/Products/Products";
 import { Search } from "./components/Search.tsx/Search";
 
 function Shop() {
-  const data = useFetch<DummyJSONProductsResponse>("https://dummyjson.com/products?limit=10");
+  const [URL, setURl] = useState<string>("https://dummyjson.com/products?limit=10");
+  const data = useFetch<DummyJSONProductsResponse>(URL);
+
+  function handleSubmit(query: string) {
+    if (query.trim() === "") return;
+    setURl(`https://dummyjson.com/products/search?q=${query}`);
+  }
 
   return (
     <section className="shop">
-      <Search />
+      <Search submit={handleSubmit} />
       <Products {...data} />
     </section>
   );

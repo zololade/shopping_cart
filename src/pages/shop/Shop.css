@@ -1,6 +1,7 @@
 @scope (.shop) {
   :scope {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     padding: 1rem 2rem;
   }
 }
