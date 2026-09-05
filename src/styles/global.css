@@ -113,7 +113,7 @@ body {
     background-color: var(--bg, #fcfcfd);
     &.home-active {
       background-image:
-        radial-gradient(at 80% 20%, rgba(108, 222, 255, 0.18) 0px, transparent 50%),
+        radial-gradient(at 80% 46%, rgba(108, 222, 255, 0.18) 0px, transparent 50%),
         radial-gradient(at 70% 80%, rgba(108, 99, 255, 0.15) 0px, transparent 50%),
         radial-gradient(at 10% 50%, var(--bg-subtle, rgba(245, 244, 239, 0.8)) 0px, transparent 50%);
       background-attachment: fixed;
