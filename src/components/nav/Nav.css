@@ -13,13 +13,6 @@
     animation: scrolled-nav linear both;
     animation-timeline: scroll();
     animation-range: 0px 50px;
-
-    @keyframes scrolled-nav {
-      to {
-        background-color: var(--bg);
-        /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-      }
-    }
   }
 
   a {
@@ -97,5 +90,12 @@
         }
       }
     }
+  }
+}
+
+@keyframes scrolled-nav {
+  to {
+    background-color: var(--bg);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   }
 }

@@ -1,9 +1,11 @@
 @scope (.products) {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem 0;
-  width: 100%;
+  :scope {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+    width: 100%;
+  }
 
   .product {
     text-decoration: none;
