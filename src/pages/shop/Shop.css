@@ -1,7 +1,68 @@
-@scope (.shop) {
+@scope (.shopPage) {
   :scope {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
+  }
+  .shopControls {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  /* Horizontal Scroll Container */
+  .categoryPills {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pill {
+    background: var(--bg-subtle);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--text-h);
+    }
+
+    &.active {
+      background: var(--accent-bg);
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(108, 99, 255, 0.2);
+    }
+  }
+
+  .sortSelect {
+    align-self: flex-end;
+    background: var(--bg-subtle);
+    color: var(--text-h);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+      border-color: var(--accent);
+    }
   }
 }

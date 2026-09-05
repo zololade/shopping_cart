@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./Shop.css";
+
 import { useFetch } from "../../hooks/useFetch/useFetch";
 import type { DummyJSONProductsResponse } from "../../types/responseType";
 import { Products } from "./components/Products/Products";
@@ -9,6 +11,8 @@ function Shop() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("");
+
+  const { data: categories } = useFetch<string[]>("https://dummyjson.com/products/category-list");
 
   const buildApiUrl = () => {
     let baseUrl = "https://dummyjson.com/products";
@@ -44,19 +48,37 @@ function Shop() {
 
   return (
     <div className="shopPage">
-      <div className="toolbar">
+      <div className="shopControls">
         <Search onSearch={handleSearch} />
 
-        {/* Category Filter */}
-        <button onClick={() => handleCategorySelect("beauty")}>Beauty</button>
-
         {/* Sort Filter */}
-        <select value={sort} onChange={(e) => setSort(e.target.value)}>
+        <select className="sortSelect" value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value="">Featured</option>
           <option value="price-asc">Price: Low to High</option>
           <option value="price-desc">Price: High to Low</option>
           <option value="rating-desc">Top Rated</option>
         </select>
+      </div>
+
+      {/* Category Pills Bar */}
+      <div className="categoryPills" role="tablist" aria-label="Filter by category">
+        <button
+          className={`pill ${category === "" ? "active" : ""}`}
+          onClick={() => handleCategorySelect("")}
+        >
+          All
+        </button>
+
+        {categories?.map((cat) => (
+          <button
+            key={cat}
+            className={`pill ${category === cat ? "active" : ""}`}
+            onClick={() => handleCategorySelect(cat)}
+          >
+            {/* Replace hyphens with spaces for clean labels */}
+            {cat.replace("-", " ")}
+          </button>
+        ))}
       </div>
 
       <Products data={data} isLoading={isLoading} error={error} />
